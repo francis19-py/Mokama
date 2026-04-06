@@ -1,5 +1,6 @@
 /* ============================================================
-   MOKAMA ENTERPRISE LIMITED — Main JavaScript
+   MOKAMA ENTERPRISE LIMITED — Enhanced Main JavaScript
+   Enhanced with improved interactivity and animations
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -93,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   aosElements.forEach(el => {
-    el.classList.add('aos-animate');
     aosObserver.observe(el);
   });
 
@@ -146,11 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
+      const originalHTML = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       btn.disabled = true;
 
       setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        btn.innerHTML = originalHTML;
         btn.disabled = false;
         form.reset();
         formSuccess.classList.add('show');
@@ -229,6 +230,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---- IMAGE LAZY LOADING ---- */
+  const images = document.querySelectorAll('img');
+  
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.style.opacity = '0';
+        img.addEventListener('load', () => {
+          img.style.transition = 'opacity 0.6s ease';
+          img.style.opacity = '1';
+        });
+        imageObserver.unobserve(img);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  images.forEach(img => imageObserver.observe(img));
+
   /* ---- SCROLL PROGRESS BAR ---- */
   const progressBar = document.createElement('div');
   progressBar.style.cssText = `
@@ -255,7 +275,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const glowObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.querySelector('.section-divider').style.animation = 'expandDivider 0.6s ease forwards';
+        const divider = entry.target.querySelector('.section-divider');
+        if (divider) {
+          divider.style.animation = 'expandDivider 0.6s ease forwards';
+        }
       }
     });
   }, { threshold: 0.5 });
@@ -271,5 +294,42 @@ document.addEventListener('DOMContentLoaded', () => {
     .section-divider { width: 0; }
   `;
   document.head.appendChild(dividerStyle);
+
+  /* ---- PARALLAX EFFECT FOR IMAGES ---- */
+  const parallaxElements = document.querySelectorAll('[data-parallax]');
+  
+  window.addEventListener('scroll', () => {
+    parallaxElements.forEach(element => {
+      const scrollPosition = window.scrollY;
+      const elementOffset = element.offsetTop;
+      const distance = scrollPosition - elementOffset;
+      element.style.backgroundPosition = `center ${distance * 0.5}px`;
+    });
+  });
+
+  /* ---- SMOOTH FADE-IN FOR IMAGES ---- */
+  const aboutImage = document.querySelector('.about-image-frame');
+  const servicesImage = document.querySelector('.services-img');
+  const clientsImage = document.querySelector('.clients-img');
+
+  [aboutImage, servicesImage, clientsImage].forEach(img => {
+    if (img) {
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.8s ease';
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = '1';
+            }, 200);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      observer.observe(img);
+    }
+  });
 
 });
