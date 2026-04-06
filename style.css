@@ -25,7 +25,7 @@
   --radius: 12px;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 18px; }
 
 body {
   font-family: var(--font-body);
@@ -46,7 +46,13 @@ img { max-width: 100%; display: block; }
 }
 
 .section { padding: 90px 0; }
-.bg-dark { background: var(--dark); color: var(--white); }
+.bg-dark { 
+  background: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.85)), url('images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--white); 
+}
 .bg-light-gray { background: var(--light-gray); }
 .mt-2 { margin-top: 1.5rem; }
 
@@ -254,7 +260,10 @@ img { max-width: 100%; display: block; }
 .hero {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #2a1a00 100%);
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,7 +332,7 @@ img { max-width: 100%; display: block; }
 .hero-title .line2,
 .hero-title .line3 {
   display: block;
-  font-size: clamp(3rem, 9vw, 7rem);
+  font-size: clamp(3.5rem, 10vw, 8rem);
   color: var(--white);
   animation: fadeInUp 0.8s ease forwards;
   opacity: 0;
@@ -336,11 +345,14 @@ img { max-width: 100%; display: block; }
 
 .hero-tagline {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: rgba(255,255,255,0.7);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: rgba(255,255,255,0.8);
   margin-bottom: 40px;
   animation: fadeInUp 0.8s 0.8s ease forwards;
   opacity: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-btns {
@@ -656,89 +668,90 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   CLIENTS
+   CLIENTS (UPGRADED)
    ============================================================ */
-.clients-intro {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 50px;
-  font-size: 1.05rem;
-  color: var(--gray);
-  line-height: 1.8;
-}
-
-.clients-grid {
+.clients-upgrade-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
-.client-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 32px 20px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  border-top: 4px solid var(--gold);
-  transition: all var(--transition);
-  cursor: default;
-}
-
-.client-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-}
-
-.client-icon {
-  width: 60px; height: 60px;
-  background: var(--gold);
-  border-radius: 50%;
+.client-upgrade-card {
+  position: relative;
+  height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px;
+  color: var(--white);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-.client-icon i {
-  font-size: 1.4rem;
-  color: var(--black);
+.client-upgrade-card:hover {
+  transform: translateY(-10px) scale(1.02);
 }
 
-.client-card h4 {
+.client-upgrade-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+  transition: opacity 0.3s ease;
+}
+
+.client-upgrade-content {
+  position: relative;
+  z-index: 2;
+}
+
+.client-upgrade-content h3 {
   font-family: var(--font-head);
+  font-size: 2.2rem;
   font-weight: 800;
-  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--white);
+}
+
+.client-upgrade-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: rgba(255,255,255,0.9);
+  max-width: 90%;
+}
+
+.client-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.client-learn-more:hover {
+  background: var(--gold);
   color: var(--black);
-  margin-bottom: 6px;
+  border-color: var(--gold);
 }
 
-.client-card p {
-  font-size: 0.8rem;
-  color: var(--gray);
-  line-height: 1.4;
+.client-learn-more i {
+  transition: transform 0.3s ease;
 }
 
-.clients-image {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-}
-
-.clients-img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 16px 50px rgba(0,0,0,0.12);
-  object-fit: contain;
-  background: var(--white);
-  padding: 20px;
-  transition: transform var(--transition);
-}
-
-.clients-img:hover {
-  transform: scale(1.05);
+.client-learn-more:hover i {
+  transform: translateX(5px);
 }
 
 .clients-note {
