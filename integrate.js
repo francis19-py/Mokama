@@ -138,25 +138,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- CONTACT FORM ---- */
+  /* ---- CONTACT FORM (Active with Formspree) ---- */
   const form = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
+  const formError = document.getElementById('formError');
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const originalHTML = btn.innerHTML;
+      
+      // UI Feedback: Sending...
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       btn.disabled = true;
+      formSuccess.classList.remove('show');
+      if (formError) formError.style.display = 'none';
 
-      setTimeout(() => {
+      // Prepare Form Data
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          // Success
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          form.reset();
+          formSuccess.classList.add('show');
+          setTimeout(() => formSuccess.classList.remove('show'), 5000);
+        } else {
+          // Server Error
+          throw new Error('Server response was not ok.');
+        }
+      } catch (error) {
+        // Network or Server Error
         btn.innerHTML = originalHTML;
         btn.disabled = false;
-        form.reset();
-        formSuccess.classList.add('show');
-        setTimeout(() => formSuccess.classList.remove('show'), 5000);
-      }, 1800);
+        if (formError) formError.style.display = 'block';
+        setTimeout(() => { if (formError) formError.style.display = 'none'; }, 5000);
+      }
     });
   }
 
@@ -221,16 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
   clientCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
       const icon = card.querySelector('.client-icon');
-      icon.style.transform = 'scale(1.15) rotate(-5deg)';
-      icon.style.transition = 'transform 0.3s ease';
+      if (icon) {
+        icon.style.transform = 'scale(1.15) rotate(-5deg)';
+        icon.style.transition = 'transform 0.3s ease';
+      }
     });
     card.addEventListener('mouseleave', () => {
       const icon = card.querySelector('.client-icon');
-      icon.style.transform = '';
+      if (icon) {
+        icon.style.transform = '';
+      }
     });
   });
-
-
 
   /* ---- SCROLL PROGRESS BAR ---- */
   const progressBar = document.createElement('div');
@@ -277,19 +307,5 @@ document.addEventListener('DOMContentLoaded', () => {
     .section-divider { width: 0; }
   `;
   document.head.appendChild(dividerStyle);
-
-  /* ---- PARALLAX EFFECT FOR IMAGES ---- */
-  const parallaxElements = document.querySelectorAll('[data-parallax]');
-  
-  window.addEventListener('scroll', () => {
-    parallaxElements.forEach(element => {
-      const scrollPosition = window.scrollY;
-      const elementOffset = element.offsetTop;
-      const distance = scrollPosition - elementOffset;
-      element.style.backgroundPosition = `center ${distance * 0.5}px`;
-    });
-  });
-
-
 
 });
