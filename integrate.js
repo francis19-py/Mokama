@@ -230,24 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- IMAGE LAZY LOADING ---- */
-  const images = document.querySelectorAll('img');
-  
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.style.opacity = '0';
-        img.addEventListener('load', () => {
-          img.style.transition = 'opacity 0.6s ease';
-          img.style.opacity = '1';
-        });
-        imageObserver.unobserve(img);
-      }
-    });
-  }, { threshold: 0.1 });
 
-  images.forEach(img => imageObserver.observe(img));
 
   /* ---- SCROLL PROGRESS BAR ---- */
   const progressBar = document.createElement('div');
@@ -307,29 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- SMOOTH FADE-IN FOR IMAGES ---- */
-  const aboutImage = document.querySelector('.about-image-frame');
-  const servicesImage = document.querySelector('.services-img');
-  const clientsImage = document.querySelector('.clients-img');
 
-  [aboutImage, servicesImage, clientsImage].forEach(img => {
-    if (img) {
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.8s ease';
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.style.opacity = '1';
-            }, 200);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      
-      observer.observe(img);
-    }
-  });
 
 });
