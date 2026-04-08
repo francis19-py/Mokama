@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Mokama Enterprise Limited</title>
+  <link rel="icon" type="image/svg+xml" href="images/drawing.svg" sizes="any"/>
+  <link rel="apple-touch-icon" href="images/drawing.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <div class="logo-icon">
+          <img src="images/drawing.svg" alt="Mokama Logo" width="100" height="100" />
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">MOKAMA</span>
+          <span class="logo-sub">ENTERPRISE LIMITED</span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO BANNER ===== -->
+  <section class="page-banner">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content" data-aos="fade-up">
+      <span class="section-tag">Reach Us</span>
+      <h1>Contact Us</h1>
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Contact</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Reach Us</span>
+        <h2>Contact Us</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <h3>Get In Touch</h3>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <strong>Address</strong>
+              <p>Longonot House, Kijabe Street<br>P.O Box 67100 – 00200<br>Nairobi, KENYA</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <strong>Phone</strong>
+              <p><a href="tel:+254714173259">+254 714 173 259</a><br><a href="tel:+254763173259">+254 763 173 259</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email</strong>
+              <p><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=info@mokama.co.ke&su=&body=" target="_blank">info@mokama.co.ke</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-globe"></i></div>
+            <div>
+              <strong>Website</strong>
+              <p><a href="http://www.mokama.co.ke" target="_blank">www.mokama.co.ke</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap" data-aos="fade-left">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/xbdpwpga" method="POST">
+            <h3>Send a Message</h3>
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required />
+              <label for="name">Your Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your Email" required />
+              <label for="email">Your Email</label>
+            </div>
+            <div class="form-group">
+              <input type="text" name="subject" placeholder="Subject" />
+              <label for="subject">Subject</label>
+            </div>
+            <div class="form-group">
+              <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i> Thank you! Your message has been sent.
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="map-container" data-aos="fade-up">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.5!2d36.8160691!3d-1.2773393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f172da4c348bb%3A0x76e04cc1ace251d2!2sLongonot%20Place%2C%20Kijabe%20St%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1680000000000!5m2!1sen!2ske"
+          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Mokama Enterprise Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER (Last Page) ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="logo-icon">
+              <img src="images/drawing.svg" alt="Mokama Logo" width="100" height="100" />
+            </div>
+            <div class="logo-text">
+              <span class="logo-main">MOKAMA</span>
+              <span class="logo-sub">ENTERPRISE LIMITED</span>
+            </div>
+          </div>
+          <p>Pre-eminent procurement, supply and manufacturing company of power related solutions. Serving Kenya since 2018.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="clients.html"><i class="fas fa-chevron-right"></i> Clients</a></li>
+            <li><a href="team.html"><i class="fas fa-chevron-right"></i> Team</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Info</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Longonot House, Kijabe Street, Nairobi</p>
+          <p><i class="fas fa-phone-alt"></i> +254 714 173 259</p>
+          <p><i class="fas fa-envelope"></i> info@mokama.co.ke</p>
+          <p><i class="fas fa-globe"></i> www.mokama.co.ke</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Mokama Enterprise Limited. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" title="Back to Top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="integrate.js"></script>
+</body>
+</html>
