@@ -1,6 +1,6 @@
 /* ============================================================
    MOKAMA ENTERPRISE LIMITED — Enhanced Main JavaScript
-   Enhanced with improved interactivity and animations
+   Multi-page version: nav active state set via HTML class
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,24 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- ACTIVE NAV LINK ON SCROLL ---- */
-  const sections = document.querySelectorAll('section[id]');
-  const navItems = document.querySelectorAll('.nav-links a');
-
-  const observerNav = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navItems.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-
-  sections.forEach(s => observerNav.observe(s));
-
-  /* ---- HERO PARTICLES ---- */
+  /* ---- HERO PARTICLES (only on pages with #particles) ---- */
   const particlesContainer = document.getElementById('particles');
+  if (particlesContainer) {
   const particleCount = 30;
 
   for (let i = 0; i < particleCount; i++) {
@@ -77,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     particlesContainer.appendChild(p);
   }
+  } // end if particlesContainer
 
   /* ---- SCROLL ANIMATIONS (AOS-like) ---- */
   const aosElements = document.querySelectorAll('[data-aos]');
